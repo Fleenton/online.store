@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Description</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="http://localhost:8080/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/style.css"/>
+</head>
+<body>
+<header th:insert="constantsBlocks/header :: header"></header>
+<br>
+<div th:object="${product}">
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- Product main img -->
+                <div class="col-md-5 col-md-push-2">
+                    <div id="product-main-img">
+                        <div class="product-preview">
+                            <img th:src="*{image}" alt="product_img">
+                        </div>
+                    </div>
+                </div>
+                <!-- /Product main img -->
+                <!-- Product thumb imgs -->
+                <div class="col-md-2  col-md-pull-5">
+                    <div id="product-imgs"></div>
+                </div>
+                <!-- /Product thumb imgs -->
+                <!-- Product details -->
+                <div class="col-md-5">
+                    <div class="product-details">
+                        <h2 th:text="*{name}" class="product-name">product name</h2>
+                        <h2 th:text="*{brand}"></h2>
+                        <div>
+                            <b>Br.</b>&nbsp;<h3 th:text="*{price}" class="product-price">Price</h3><b>р</b>
+                        </div>
+
+                            <!-- Product tab -->
+                            <div class="col-md-12">
+                                <div id="product-tab" style="margin-top: 10px">
+                                    <!-- product tab nav -->
+                                    <ul class="tab-nav">
+                                        <li th:text="#{descript}"></li>
+                                    </ul>
+                                    <!-- /product tab nav -->
+                                    <!-- product tab content -->
+                                    <div class="tab-content">
+                                        <!-- tab1  -->
+                                        <div id="tab1" class="tab-pane fade in active" style="margin-bottom: 20px">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p th:text="*{description}">Product description</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /tab1  -->
+                                    </div>
+                                    <!-- /product tab content  -->
+                                </div>
+                            </div>
+                            <!-- /product tab -->
+
+                        <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')">
+                            <div class="product-options">
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn" th:text="#{add_to_cart}"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Product details -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+</div>
+<br>
+<footer th:insert="constantsBlocks/footer :: footer"></footer>
+</body>
+</html>

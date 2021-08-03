@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!-- HEADER -->
+<div th:fragment="header">
+
+    <!-- TOP HEADER -->
+    <div id="top-header">
+        <div class="container">
+            <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')">
+                <ul class="header-links pull-left">
+                    <form th:action="@{/logout}" method="post">
+                        <p style="color: white; display: inline-block">
+                            <span th:text="#{welcome}"></span> <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                        </p>
+                        <input style="display: inline-block; border-radius: 100px 100px 100px 100px;
+                         color: white; background-color: #D10024"
+                               type="submit" th:value="#{sign_out}" />
+                    </form>
+                </ul>
+            </div>
+            <ul class="header-links pull-right">
+                <li><a th:include="language_bar.html">Language</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /TOP HEADER -->
+
+    <!-- MAIN HEADER -->
+    <div id="header">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <!-- LOGO -->
+                <div class="col-md-3" style="top: 15px">
+                    <div class="header-logo">
+                        <a th:href="@{/}" class="logo">
+                            <img src="http://localhost:8080/img/the_logo.png" alt="logo" width="250" height="50">
+                        </a>
+                    </div>
+                </div>
+                <!-- /LOGO -->
+
+                <!-- SEARCH BAR -->
+                <div class="col-md-6">
+                    <div class="header-search">
+                        <form th:action="@{/search}" style="left: 100px">
+                            <input class="input" type="text" name="keyword" id="keyword" size="50" th:value="${keyword}"
+                                   th:placeholder="#{site_search}" required style="border-radius: 40px 0px 0px 40px;" />
+                            <input class="search-btn" type="submit" th:value="#{search}" />
+                        </form>
+                    </div>
+                </div>
+                <!-- /SEARCH BAR -->
+
+                <!-- ACCOUNT -->
+                <div class="col-md-3 clearfix">
+                    <div class="header-ctn">
+
+                        <!-- MyAccount -->
+                        <div>
+                            <a th:href="@{#}">
+                            <img src="http://localhost:8080/img/my_account.png" alt="my_account" width="25" height="25"><br>
+                            <select style="background: none; border: none; color: white"
+                                    onchange="document.location=this.options[this.selectedIndex].value">
+                                <option style="color:black" value="#" th:text="#{my_account}"></option>
+                                <option style="color:black" value="/login" th:text="#{login}"></option>
+                                <option style="color:black" value="/registration" th:text="#{registration}"></option>
+                            </select>
+                            </a>
+                        </div>
+                        <!-- /MyAccount -->
+
+                        <!-- Cart -->
+                        <div class="dropdown">
+                            <a th:href="@{/cart}">
+                                <img src="http://localhost:8080/img/cart.png" alt="cart" width="30" height="25"><br>
+                                <span th:text="#{cart}"></span>
+                            </a>
+                        </div>
+                        <!-- /Cart -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /MAIN HEADER -->
+
+    <!-- NAVIGATION -->
+    <nav id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li><a th:href="@{/}" th:text="#{home}"></a></li>
+                    <li><a th:href="@{/appliances}" th:text="#{appliances}"></a></li>
+                    <li><a th:href="@{/computers}" th:text="#{computers}"></a></li>
+                    <li><a th:href="@{/smartphones}" th:text="#{smartphones}"></a></li>
+                    <li><a th:href="@{/household_products}" th:text="#{household_products}"></a></li>
+                    <li><a th:href="@{/sporting_products}" th:text="#{sporting_products}"></a></li>
+                </ul>
+                <!-- /NAV -->
+
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+</div>
+<!-- /HEADER -->

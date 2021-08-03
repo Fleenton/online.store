@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!-- FOOTER -->
+<div th:fragment="footer">
+    <div id="footer">
+        <!-- top footer -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title" th:text="#{about_us}"></h3>
+                            <p th:text="#{online_store}"></p>
+                            <ul class="footer-links">
+                                <li><a href="#" th:text="#{street}"></a></li>
+                                <li><a href="#">+375 (29) 000-00-00</a></li>
+                                <li><a href="#">email@email.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title" th:text="#{categories}"></h3>
+                            <ul class="footer-links">
+                                <li><a th:href="@{/}" th:text="#{home}"></a></li>
+                                <li><a th:href="@{/appliances}" th:text="#{appliances}"></a></li>
+                                <li><a th:href="@{/computers}" th:text="#{computers}"></a></li>
+                                <li><a th:href="@{/smartphones}" th:text="#{smartphones}"></a></li>
+                                <li><a th:href="@{/household_products}" th:text="#{household_products}"></a></li>
+                                <li><a th:href="@{/sporting_products}" th:text="#{sporting_products}"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="footer">
+                                <h3 class="footer-title" th:text="#{admin_service}"></h3>
+                                <ul class="footer-links">
+                                        <li><a th:href="@{/users}" th:text="#{list_of_users}"></a></li>
+                                        <li><a th:href="@{/products_list}" th:text="#{list_of_products}"></a></li>
+                                        <li><a th:href="@{#}" th:text="#{order_list}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /top footer -->
+
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                      <span class="copyright">
+                                            TeachMeSkills &copy;<script>document.write(new Date().getFullYear());</script>
+                      </span>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </div>
+</div>
+<!-- /FOOTER -->

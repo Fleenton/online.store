@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Registration Success</title>
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css"/>
+
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick.css"/>
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick-theme.css"/>
+
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/nouislider.min.css"/>
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="http://localhost:8080/css/font-awesome.min.css">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/style.css"/>
+</head>
+<body>
+<header th:insert="constantsBlocks/header :: header"></header>
+<br>
+
+<div class="container text-center">
+  <h3 th:text="#{successfully}"></h3>
+  <div>
+    <a th:href="@{/login}"><button type="submit" class="btn btn-primary" th:text="#{click_to_login}"></button></a>
+  </div>
+</div>
+
+<br>
+<footer th:insert="constantsBlocks/footer :: footer"></footer>
+</body>
+</html>

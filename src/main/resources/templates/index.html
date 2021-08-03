@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css"/>
+
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick.css"/>
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick-theme.css"/>
+
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/nouislider.min.css"/>
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="http://localhost:8080/css/font-awesome.min.css">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/style.css"/>
+</head>
+<body>
+  <header th:insert="constantsBlocks/header :: header"></header>
+
+    <!-- HOT DEAL SECTION -->
+    <div id="hot-deal" class="section" style="background-image: url('http://localhost:8080/img/hotd.png');">
+
+      <!-- container -->
+      <div class="container">
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="hot-deal">
+              <ul class="hot-deal-countdown">
+                <li>
+                  <div>
+                    <h3>00</h3>
+                    <span th:text="#{days}"></span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <h3>00</h3>
+                    <span th:text="#{hours}"></span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <h3>00</h3>
+                    <span th:text="#{mins}"></span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <h3>00</h3>
+                    <span th:text="#{secs}"></span>
+                  </div>
+                </li>
+              </ul>
+              <h2 class="text-uppercase" th:text="#{hot_deal_this_week}"></h2>
+              <p th:text="#{new_collection}"></p>
+              <a class="primary-btn cta-btn" href="#" th:text="#{shop_now}"></a>
+            </div>
+          </div>
+        </div>
+        <!-- /row -->
+
+      </div>
+      <!-- /container -->
+
+    </div>
+    <!-- /HOT DEAL SECTION -->
+
+  <footer th:insert="constantsBlocks/footer :: footer"></footer>
+</body>
+</html>

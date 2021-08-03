@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>New Product</title>
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css"/>
+
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick.css"/>
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/slick-theme.css"/>
+
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/nouislider.min.css"/>
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="http://localhost:8080/css/font-awesome.min.css">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="http://localhost:8080/css/style.css"/>
+</head>
+<body>
+<header th:insert="constantsBlocks/header :: header"></header>
+<br>
+
+<div class="container text-center">
+  <div>
+    <h1 th:text="#{create_new_product}"></h1>
+  </div>
+  <form th:action="@{/save}" th:object="${product}"
+        method="post" style="max-width: 600px; margin: 0 auto;">
+    <div class="m-3">
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{product_name}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{name}" class="form-control"
+                 required minlength="2" maxlength="20"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{brand}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{brand}" class="form-control"
+                 required minlength="2" maxlength="20"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{made_in}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{madeIn}" class="form-control"
+                 required minlength="2" maxlength="20"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{price_product}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{price}" class="form-control"
+                 required minlength="2" maxlength="20"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{description}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{description}" class="form-control"
+                 required minlength="100" maxlength="10000"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{image}"></label>
+        <div class="col-8">
+          <input type="text" th:field="*{image}" class="form-control"
+                 required minlength="1" maxlength="100"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label" th:text="#{category_product}"></label>
+        <div class="col-8">
+          <select th:field = "*{category.id}" class="form-control">
+              <tr th:each="category : ${categoryList}">
+                <option th:value="${category.id}">
+                  <td th:text="${category.id}">ID</td>
+                  <td th:text="${category.name}" >Name</td>
+                </option>
+              </tr>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary" th:text="#{save}"></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+<footer th:insert="constantsBlocks/footer :: footer"></footer>
+</body>
+</html>
