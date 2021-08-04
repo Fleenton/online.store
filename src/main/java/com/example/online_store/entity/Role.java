@@ -9,11 +9,11 @@ import java.util.Set;
 @Table(name = "roles")
 public class Role implements Serializable {
     @Id
-    @Column(name = "role_id")
+    @Column(name = "role_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", nullable = false, length = 30)
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
