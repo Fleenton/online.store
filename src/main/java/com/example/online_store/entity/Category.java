@@ -7,11 +7,11 @@ import java.util.Set;
 @Table(name = "categories")
 public class Category {
     @Id
-    @Column(name = "category_id")
+    @Column(name = "category_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name", nullable = false, length = 30)
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)

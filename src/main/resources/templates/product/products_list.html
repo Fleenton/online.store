@@ -41,19 +41,26 @@
     <table class="table table-striped table-bordered">
       <thead class="thead-dark">
       <tr>
-        <th th:text="#{product_id}"></th>
+        <div sec:authorize="hasAnyAuthority('ADMIN')">
+          <th th:text="#{product_id}"></th>
+        </div>
         <th><a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
           <b th:text="#{name}"></b></a></th>
         <th th:text="#{brand}"></th>
         <th th:text="#{made_in}"></th>
         <th><a th:href="@{'/page/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">
           <b th:text="#{price}"></b></a></th>
-        <th th:text="#{actions}"></th>
+        <th th:text="#{view}"></th>
+        <div sec:authorize="hasAnyAuthority('ADMIN')">
+          <th th:text="#{actions}"></th>
+        </div>
       </tr>
       </thead>
       <tbody>
       <tr th:each="product : ${productList}">
-        <td th:text="${product.id}">Product ID</td>
+        <div sec:authorize="hasAnyAuthority('ADMIN')">
+          <td th:text="${product.id}">Product ID</td>
+        </div>
         <td th:text="${product.name}">Name</td>
         <td th:text="${product.brand}">Brand</td>
         <td th:text="${product.madeIn}">Made in</td>
@@ -62,17 +69,19 @@
             <a th:href="@{'/viewing/' + ${product.id}}">
               <img src="http://localhost:8080/img/viewing.png" alt="viewing" width="35" height="20">
             </a>
-          <div sec:authorize="hasAnyAuthority('ADMIN')">
-            &nbsp&nbsp&nbsp
-            <a th:href="@{'/edit/' + ${product.id}}">
-              <img src="http://localhost:8080/img/edit.png" alt="edit" width="25" height="25">
-            </a>
-            &nbsp&nbsp&nbsp
-            <a th:href="@{'/delete/' + ${product.id}}">
-              <img src="http://localhost:8080/img/delete.png" alt="delete" width="25" height="25">
-            </a>
-          </div>
         </td>
+        <div sec:authorize="hasAnyAuthority('ADMIN')">
+          <td>
+              &nbsp&nbsp&nbsp
+              <a th:href="@{'/edit/' + ${product.id}}">
+                <img src="http://localhost:8080/img/edit.png" alt="edit" width="25" height="25">
+              </a>
+              &nbsp&nbsp&nbsp
+              <a th:href="@{'/delete/' + ${product.id}}">
+                <img src="http://localhost:8080/img/delete.png" alt="delete" width="25" height="25">
+              </a>
+          </td>
+        </div>
       </tr>
       </tbody>
     </table>

@@ -10,23 +10,23 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 30)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 30)
     private String lastName;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false, unique = true, length = 30)
     private String userName;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 30)
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true, length = 30)
     private String email;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

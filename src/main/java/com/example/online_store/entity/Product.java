@@ -6,26 +6,26 @@ import javax.persistence.*;
 @Table(name = "products")
 public class Product {
     @Id
-    @Column(name = "product_id")
+    @Column(name = "product_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_name")
+    @Column(name = "product_name", nullable = false, length = 30)
     private String name;
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false, length = 30)
     private String brand;
 
-    @Column(name = "made_in")
+    @Column(name = "made_in", nullable = false, length = 30)
     private String madeIn;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false, length = 15)
     private double price;
 
-    @Column(name = "image")
+    @Column(name = "image", nullable = false)
     private String image;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
     @ManyToOne
