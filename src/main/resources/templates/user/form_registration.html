@@ -69,7 +69,9 @@
             <div class="form-group row">
                 <label class="col-4 col-form-label" th:text="#{email}"></label>
                 <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control" required />
+                    <input type="email" th:field="*{email}" class="form-control" required
+                           pattern="^([\w-\.]{2,15})@((?:[\w-]{0,4}\.){0,1}\w[\w-]{0,3})\.([a-z]{2,6})$"
+                           oninvalid="setCustomValidity(loc())" oninput="setCustomValidity('')" />
                 </div>
             </div>
 

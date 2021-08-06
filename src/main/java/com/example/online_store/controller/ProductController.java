@@ -98,11 +98,9 @@ public class ProductController {
     @RequestMapping("/search")
     public String viewSearchPage(Model model,
                                  @Param("keyword") String keyword) {
-
         List<Product> productList = service.listAll(keyword);
         model.addAttribute("productList", productList);
         model.addAttribute("keyword", keyword);
-
         if(keyword == null) {
             return "redirect:header";
         }

@@ -86,7 +86,9 @@
                         <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')">
                             <div class="product-options">
                                 <div class="add-to-cart">
-                                    <button class="add-to-cart-btn" th:text="#{add_to_cart}"></button>
+                                    <a th:href="@{'/add_to_cart/' + ${product.id}}">
+                                        <button class="add-to-cart-btn" th:text="#{add_to_cart}"></button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -32,6 +32,8 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    transient private Long noId;
+
     public Product() {
     }
 
@@ -107,5 +109,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Long getNoId() {
+        return noId;
+    }
+
+    public void setNoId(Long noId) {
+        this.noId = noId;
     }
 }
