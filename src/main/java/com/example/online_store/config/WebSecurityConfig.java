@@ -55,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/edit/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/delete/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/new_product").hasAnyAuthority("ADMIN")
+                .antMatchers("/cart").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().permitAll();
         http.formLogin()
                 .loginPage("/login")
